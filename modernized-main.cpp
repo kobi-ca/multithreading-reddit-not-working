@@ -12,11 +12,6 @@ namespace {
     constexpr std::size_t NUM_THREADS = 100;
 }
 
-void FillArr(std::array<int, NUM_THREADS>& working, const int idx)
-{
-    working[idx] = idx;
-}
-
 int main()
 {
     std::array<std::thread, NUM_THREADS> threads;
@@ -24,7 +19,7 @@ int main()
     int idx{};
     for(auto& t : threads) {
         // move op=
-        t = std::thread(FillArr, std::ref(working), idx++);
+        t = std::thread([&working](const int idx){ working[idx] = idx; }, idx++);
     }
 
     // cannot have jthread since we must make sure they all done before calling equal
