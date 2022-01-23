@@ -30,8 +30,7 @@ int main()
 
     std::array<int, NUM_THREADS> verify{0};
     std::iota(verify.begin(), verify.end(), 0);
-    const auto ret = std::equal(verify.begin(), verify.end(), working.begin());
-    std::clog << std::boolalpha << ret << '\n';
+    std::clog << std::boolalpha << (verify == working) << '\n';
 
     return 0;
 }
