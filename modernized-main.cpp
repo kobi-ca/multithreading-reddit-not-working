@@ -10,11 +10,6 @@
 
 namespace {
     constexpr std::size_t NUM_THREADS = 100;
-
-    void print(const std::array<int, NUM_THREADS>& arr) {
-        std::copy(arr.cbegin(), arr.cend(), std::ostream_iterator<int>{std::clog, ","});
-        std::clog << '\n';
-    }
 }
 
 void FillArr(std::array<int, NUM_THREADS>& working, const int idx)
@@ -42,12 +37,6 @@ int main()
     std::iota(verify.begin(), verify.end(), 0);
     const auto ret = std::equal(verify.begin(), verify.end(), working.begin());
     std::clog << std::boolalpha << ret << '\n';
-
-    if(!ret) {
-        print(verify);
-        print(working);
-    }
-
 
     return 0;
 }
