@@ -5,7 +5,6 @@
 #include <iostream>
 #include <thread>
 #include <cassert>
-#include <vector>
 #include <numeric>
 
 namespace {
